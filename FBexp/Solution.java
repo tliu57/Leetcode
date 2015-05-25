@@ -14,7 +14,7 @@ public class Solution {
 		Arrays.sort(arr);
 		StringBuffer out = new StringBuffer();
 		for(int i = 0 ; i < arr.length ; i++) {
-			out.append(order.charAt(i));
+			out.append(order.charAt(arr[i]));
 		}
 		return out.toString();
 	}
