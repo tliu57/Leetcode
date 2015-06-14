@@ -4,9 +4,8 @@ class Solution:
 	# @return {integer[]}
 	def twoSum(self, nums, target):
 		dict = {};
-		for i in nums:
-			temp = nums[i]
-			if dict.has_key(target - temp):
-				return integer[]{dict.get(target - temp) + 1, i+1}
-			dict.setdefault(key, i)
-		return null
+		for j, item in enumerate(nums, 1):
+			i = dict.get(target - item, -1) # returns value or default if key not in dictionary, returns -1 if key not found
+			if i > 0:
+				return [i, j]
+			dict[item] = j
