@@ -1,4 +1,3 @@
-
 # The read4 API is already defined for you.
 # @param buf, a list of characters
 # @return an integer
@@ -9,20 +8,19 @@ class Solution(object):
 		"""
 		:type buf: Destination buffer (List[str])
 		:type n: Maximum number of characters to read (int)
-		:rtype: The number of characters read (int)
-		"""
-		idx = 0
+	 	:rtype: The number of characters read (int)
+	  	"""
+	  	actual_read = 0
 	  	while n > 0:
-			buffer = ['']*4
-	  		l = read4(buffer)
+			buf4 = [''] * 4
+	  		l = read4(buf4)
+
 	  		if not l:
-		  		return 0
+	  			return actual_read
 
-		  	for i in range(min(l, n)):
-				buf[idx] = buf4[i]
-			  	idx += 1
-			  	n -= 1
-		return idx
+	  		for i in range(min(n, l)):
+		  		buf[actual_read] = buf4[i]
+		  		actual_read += 1
+		  		n -= 1
 
-
-
+		 return actual_read
