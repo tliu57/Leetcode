@@ -13,7 +13,7 @@ class Solution(object):
 		return self.res
 	
 	def dfs(self, dungeon, i, j, m, n, initial_val, prev_val):
-		if dungeon[i][j] + self.prev_val <= 0:
+		if dungeon[i][j] + prev_val <= 0:
 			self.initial_val = initial_val - dungeon[i][j] - prev_val + 1
 			self.prev_val = 1
 		else:
@@ -23,14 +23,12 @@ class Solution(object):
 		if j < n - 1:
 			self.dfs(dungeon, i, j+1, m, n, self.initial_val, self.prev_val)
 		if i == m-1 and j == n-1:
-			print "initial_val is:", self.initial_val
-			print "prev_val is:", self.prev_val
 			if self.res == 0:
 				self.res == self.initial_val
 				print "self.res is:", self.res
 			else:
 				self.res = min(self.res, self.initial_val)
-			print "after branch, self.res is:", self.res
+				print "refresh self.res value to:", self.res
 			return
 
 sol = Solution()
