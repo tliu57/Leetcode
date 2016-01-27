@@ -11,7 +11,7 @@ class Solution():
 			target_sum = target - nums[i]
 			low = i + 1
 			high = len(nums) - 1
-			while low <= high:
+			while low < high:
 				current_sum = nums[low] + nums[high]
 				if current_sum <= target_sum:
 					if abs(current_sum - target_sum) < self.gap:
@@ -30,6 +30,7 @@ class Solution():
 		sub.append(nums[i])
 		sub.append(nums[low])
 		sub.append(nums[high])
+		print "sub is:", sub
 		if len(self.dictionary) == 0:
 			self.dictionary[self.gap] = sub
 		else:
