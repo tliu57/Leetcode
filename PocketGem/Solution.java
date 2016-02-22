@@ -9,6 +9,7 @@ public class Solution{
 	private static String start = "";
 	private static String end = "";
 	private static HashMap<String, String[]> map = new HashMap<String, String[]>();
+	private static ArrayList<String> answer = new ArrayList<String>();
 
 	public static void main(String[] args){
 		String filename = "text.txt";
@@ -27,6 +28,9 @@ public class Solution{
 		HashSet<String> visited = new HashSet<String>();
 		ArrayList<String> path = new ArrayList<String>();
 		findAllPathUtil(start, end, visited, path, 0);
+		for (String str : answer){
+			System.out.println(str);
+		}
 		}
 	
 	
@@ -61,11 +65,12 @@ public class Solution{
 		visited.add(begin);
 		path.add(pathIndex, begin);
 		pathIndex ++;
-		if (begin == destination) {
+		if (begin.equals(destination)) {
+			String tmpString = "";
 			for (int i = 0; i< pathIndex; i++){
-				System.out.printf("%s\t",path.get(i));
+				tmpString = tmpString.concat(path.get(i));
 			}
-			System.out.println();
+			answer.add(tmpString);
 		}
 		else {
 			String[] values = map.get(begin);
@@ -77,6 +82,8 @@ public class Solution{
 				}
 			}
 		}
+		pathIndex --;
+		visited.remove(begin);
 
 	}
 
