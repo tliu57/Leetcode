@@ -56,6 +56,10 @@ public class Solution{
 	
 		System.out.println("connected duration is"+ connectedDuration);
 		System.out.println("logged duration is"+ loggedDuration);
+		float percentage = (float) connectedDuration / (float) loggedDuration * 100 ;
+		int perc = (int) percentage;
+		String str = String.valueOf(perc).concat("%");
+		System.out.println(str);
 	}
 
 	/*
