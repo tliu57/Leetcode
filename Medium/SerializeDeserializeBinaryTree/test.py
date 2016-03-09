@@ -61,11 +61,12 @@ n12.right = n14
 
 codec = Codec()
 serial =  codec.serialize(n20)
+print serial
 root =  codec.deserialize(serial)
-print root.val
+#print root.val
 left =  root.left
-print left.val
-print left.left.val
-print left.right.val
-print left.right.left.val
-print left.right.right.val
+#print left.val
+#print left.left.val
+#print left.right.val
+#print left.right.left.val
+#print left.right.right.val
