@@ -21,7 +21,7 @@ class Solution(object):
 		if pair[0] == '(':
 			self.removeInvalidParenthesesHelper(reversed, ans_list, 0, 0, (')', '('))
 		else:
-			ans_list.append(s)
+			ans_list.append(reversed)
 
 
 sol = Solution()
