@@ -1,4 +1,3 @@
-from sets import Set
 class Solution(object):
 	def diffWaysToCompute(self, input):
 		result = list()
@@ -7,11 +6,9 @@ class Solution(object):
 				prefix = input[:i]
 				postfix = input[i+1:]
 				PreResultList = self.diffWaysToCompute(prefix)
-				PreResultSet = Set(PreResultList)
 				PostResultList = self.diffWaysToCompute(postfix)
-				PostResultSet = Set(PostResultList)
-				for num1 in PreResultSet:
-					for num2 in PostResultSet:
+				for num1 in PreResultList:
+					for num2 in PostResultList:
 						resNum = 0
 						if input[i] == '+':
 							resNum = num1 + num2
