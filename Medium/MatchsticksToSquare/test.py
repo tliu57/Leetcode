@@ -5,6 +5,7 @@ class Solution(object):
 		numsum = sum(nums)
 		if not numsum % 4 == 0:
 			return False
+		nums = sorted(nums, reverse=True)
 		return self.dfs(nums, [0]*4, 0, numsum/4)
 
 	def dfs(self, nums, sums, index, target):
