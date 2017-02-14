@@ -21,3 +21,4 @@ class Solution(object):
 sol = Solution()
 print sol.numDecodings("12")
 print sol.numDecodings("10")
+print sol.numDecodings("101")
