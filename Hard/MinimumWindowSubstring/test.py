@@ -1,35 +1,27 @@
 import sys
 class Solution(object):
 	def minWindow(self, s, t):
-		map = {}
-		for i in xrange(26):
-			map[chr(ord('A') + i)] = 0
-		begin = 0
-		head = 0
-		end = 0
-		counter = len(t)
-		d = sys.maxint
-		for elem in t:
-		 	map[elem] += 1
-		while end < len(s):
-			if map[s[end]] > 0:
-				counter -= 1
-			map[s[end]] -= 1
-			end += 1
-			print "for end = %d, map is:"%end, map
-			print "---------------------"
-			while counter == 0:
-				head = begin
-				d = end - head
-				if map[s[begin]] == 0:
-					counter += 1
-				map[s[begin]] += 1
-				begin += 1
-		if d == sys.maxint:
-		 	return ""
-		return s[head:head+d]
+		need = collections.Counter(t)
+        	missing = len(t)
+       		i, head, end = 0, 0, 0
+        	for j, c in enumerate(s, 1):
+                	missing -= need[c] > 0
+                	need[c] -= 1
+                	if not missing:
+                        	while i < j and need[s[i]] < 0 :
+                                	need[s[i]] += 1
+                                	i += 1
+                        	if end == 0 or j - i < end - head:
+                                	end = j
+                                	head = i
+        	return s[head: end]
 sol = Solution()
 s = "ADOBECODEBANC"
 t = "ABC"
-print sol.minWindow(s, t)
-				
+# print sol.minWindow(s, t)
+
+need = 2
+missing = 3
+
+missing -= need > 0
+print missing				
