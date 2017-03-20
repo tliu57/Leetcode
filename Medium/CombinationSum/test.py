@@ -11,8 +11,8 @@ class Solution(object):
 
 	def combinationSumHelper(self, candidates, target, pos, subsol, res):
 		if target == 0:
-			print "subsol is:", subsol
-			res.append(subsol)
+			new_sub = [elem for elem in subsol]
+			res.append(new_sub)
 			print "res is:", res
 			return
 		for i in range(pos, len(candidates)):
