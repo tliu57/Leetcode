@@ -7,6 +7,8 @@ class TreeNode(object):
 class Codec:
 	
 	def serialize(self, root):
+		if not root:
+			return ''
 		queue = [root]
 		idx = 0
 		while idx < len(queue):
@@ -17,8 +19,9 @@ class Codec:
 		return ",".join([str(node.val) if node else "#" for node in queue])
 
 	def deserialize(self, data):
+		if data == '':
+			return None
 		data = data.split(",")
-		# 1,2,3,#,#,4,5,#,#,#,#
 		root = TreeNode(data[0])
 		queue = [root]
 		isLeftnode = True
