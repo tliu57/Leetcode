@@ -14,15 +14,21 @@ public:
 			dict[key] = i;
 		}
 
+		if (dict.find("")!= dict.end()) {
+			for (int i = 0; i < words.size(); i++) {
+				if (i == dict[""]) continue;
+				if (isPalindrome(words[i])) res.push_back({dict[""], i});
+			}
+		}
 		for (int i = 0; i < words.size(); i++) {
 			for (int j = 0; j < words[i].size(); j++) {
 				string left = words[i].substr(0, j);
 				string right = words[i].substr(j, words[i].size()-j);
-				if(isPalindrome(left) && dict[right] != i) {
+				if(dict.find(right)!= dict.end() && isPalindrome(left) && dict[right] != i) {
 					vector<int> temp_vec = {dict[right], i};
 					res.push_back(temp_vec);
 				}
-				if(isPalindrome(right) && dict[left]!= i) {
+				if(dict.find(left)!= dict.end() && isPalindrome(right) && dict[left]!= i) {
 					vector<int> temp_vec = {i, dict[left]};
 					res.push_back(temp_vec);
 				}
