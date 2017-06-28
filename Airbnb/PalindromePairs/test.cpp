@@ -25,8 +25,8 @@ public:
 				string left = words[i].substr(0, j);
 				string right = words[i].substr(j, words[i].size()-j);
 				if(dict.find(right)!= dict.end() && isPalindrome(left) && dict[right] != i) {
-					vector<int> temp_vec = {dict[right], i};
-					res.push_back(temp_vec);
+					//vector<int> temp_vec = {dict[right], i};
+					res.push_back({dict[right], i});
 				}
 				if(dict.find(left)!= dict.end() && isPalindrome(right) && dict[left]!= i) {
 					vector<int> temp_vec = {i, dict[left]};
