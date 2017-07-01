@@ -46,7 +46,7 @@ class Solution(object):
 			return
 		path += c
 		node = node.children[c]
-		if node.word:
+		if node.word and path not in res:
 			res.append(path)
 		board[i][j] = "#"
 		if i > 0:
