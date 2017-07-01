@@ -37,36 +37,36 @@ class Solution(object):
 		n = len(board[0])
 		for i in range(m):
 			for j in range(n):
-				self.dfs(board, i, j, root, res)
+				self.dfs(board, i, j, "", root, res)
 		return res
 
-	def dfs(self, board, i, j, node, res):
+	def dfs(self, board, i, j, path, node, res):
 		c = board[i][j]
-		if c == '#' or (c - 'a') not in node.children:
+		if c == '#' or c not in node.children:
 			return
-		node = node.children[c - 'a']
+		path += c
+		node = node.children[c]
 		if node.word:
-			res.append(node.word)
+			res.append(path)
 		board[i][j] = "#"
 		if i > 0:
-			self.dfs(board, i-1, j, node, res)
+			self.dfs(board, i-1, j, path, node, res)
 		if j > 0:
-			self.dfs(board, i, j-1, node, res)
+			self.dfs(board, i, j-1, path, node, res)
 		if i < len(board) - 1:
-			self.dfs(board, i+1, j, node, res)
+			self.dfs(board, i+1, j, path, node, res)
 		if j < len(board[0]) - 1:
-			self.dfs(board, i, j+1, node, res)
+			self.dfs(board, i, j+1, path, node, res)
 		board[i][j] = c
 
 
 
 sol = Solution()
 words = ["oath", "pea", "eat", "rain"]
-root = sol.buildTrie(words)
-queue = [root]
-while queue:
-	print queue
-	new_level = []
-	for node in queue:
-		new_level.append(node.children.keys())
-	queue = new_level
+board = [
+	 [ 'o', 'a', 'a', 'n'],
+	 [ 'e', 't', 'a', 'e'],
+	 [ 'i', 'h', 'k', 'r'],
+	 [ 'i', 'f', 'l', 'v']
+	]
+print sol.findWords(board, words)
