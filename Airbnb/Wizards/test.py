@@ -10,14 +10,17 @@ class Solution(object):
 		n = len(costs)
 		wizards = []
 		for i in range(n):
-			wizards.append(Wizard(i, 0 if i == 0 else sys.maxsize))
+			if i == 0:
+				wizards.append(Wizard(i, 0))
+			else:
+				wizards.append(Wizard(i, sys.maxsize))
 
 		queue = []
 		queue.append(wizards[0])
 		while queue:
 			curr = queue.pop()
 			for i in costs[curr.idx]:
-				newDis = curr.dis + (curr.idx - i)^2
+				newDis = curr.dis + (curr.idx - i)*(curr.idx - i)
 				if newDis < wizards[i].dis:
 					wizards[i].dis = newDis
 					queue.append(wizards[i])
