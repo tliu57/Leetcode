@@ -35,7 +35,7 @@ public:
 			j++;
 			moveToNext();
 			//cout << "prev_i" << prev_i;
-			//cout << "prev_j" << prev_j;
+			cout << "prev_j:" << prev_j;
 			return vec2d[prev_i][prev_j];
 		}
 		else return -1;
@@ -44,9 +44,8 @@ public:
 	void remove() {
 		if (prev_i != -1 && prev_j != -1) {
 			vector<int> row = vec2d[prev_i];
-			cout << "begin erasing:";
 			row.erase(row.begin() + prev_j);
-			for (auto idx = row.begin(); idx != row.end(); ++idx) cout << *idx << ' ';
+			// for (auto idx = row.begin(); idx != row.end(); ++idx) cout << *idx << ' ';
 			i = prev_i;
 			j = prev_j;
 			moveToNext();
@@ -65,7 +64,10 @@ int main() {
 	vec2d.push_back({3});
 	vec2d.push_back({4, 5, 6});
 	Vector2D i(vec2d);
-	cout << i.next();
+	i.next();
+	i.next();
+	i.next();
+	i.next();
 	i.next();
 	i.remove();
 	//while (i.hasNext()) {
