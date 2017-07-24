@@ -28,15 +28,10 @@ class Solution(object):
 
 sol = Solution()
 costs= [
-	[1, 4, 5],
-	[],
-	[],
-	[],
-	[9],
-	[],
-	[],
-	[],
-	[],
+	[1, 2],
+	[3],
+	[3, 4],
+	[4],
 	[]
 ]
 print sol.findMinDistance(costs)
