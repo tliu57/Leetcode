@@ -26,6 +26,9 @@ public:
 		}
 		return i != iEnd;	
 	}
+	iterator remove() {
+		(*i).erase(j);
+	}
 };
 
 int main() {
