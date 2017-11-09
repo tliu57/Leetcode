@@ -39,6 +39,6 @@ class Solution:
 
 sol = Solution()
 sequences = ["area","lead","wall","lady","ball"]
-print sol.wordSquares(sequences)
+print (sol.wordSquares(sequences))
 words = ["abat","baba","atan","atal"]
-print sol.wordSquares(words)
+print (sol.wordSquares(words))
