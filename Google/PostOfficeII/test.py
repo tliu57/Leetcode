@@ -19,7 +19,7 @@ class Solution():
 		while queue:
 			q_size = len(queue)
 			for l in range(q_size):
-				curr_x, curr_y = queue.pop(l)
+				curr_x, curr_y = queue.pop(0)
 				visited.add((curr_x, curr_y))
 				if distances[curr_x][curr_y] != max_distance:
 					distances[curr_x][curr_y] += steps
@@ -29,7 +29,6 @@ class Solution():
 					if self.isValid(next_x, next_y, grid) and (next_x, next_y) not in visited:
 						queue.append((next_x, next_y))
 			steps += 1
-		print distances
 
 	def isValid(self, x, y, grid):
 		if x < 0 or y < 0 or x >= len(grid) or y >= len(grid[0]):
@@ -60,7 +59,7 @@ class Solution():
 					self.bfs(i, j, grid, distances)
 		for i in range(m):
 			for j in range(n):			
-				if distance[i][j] != max_distance:
+				if distances[i][j] != max_distance:
 					shortest = min(shortest, distances[i][j])
 		return shortest
 
@@ -71,4 +70,16 @@ sample = [
 	  [0, 0, 2],
 	  [0, 1, 2]
 	]
-print sol.shortestDistance(sample)
+samples2 = [
+	    [2, 0, 1, 2],
+	    [0, 0, 0, 2],
+	    [2, 0, 0, 2],
+	    [2, 1, 2, 2]
+]
+distances = [
+	     [max_distance, max_distance, 0],
+	     [0, 0, max_distance],
+     	     [0, max_distance, max_distance]
+]
+
+print sol.shortestDistance(samples2)
