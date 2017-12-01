@@ -1,0 +1,169 @@
+Twitter interviews:
+******************************************************************
+
+太激动了面试官是内蒙古的老乡！！人好nice！面的题也算是见过的！！开熏开熏
+1.find integer appear odd times in an array 
+   a. one odd count integer 
+   b. multiple odd count integers.1point3acres缃�
+2. shortest path in 2d array with obestacles, given start and end point
+   a. output shortest path length
+   b. output indexes of the path nodes
+问题：
+Given a 2D matrix a two cells inside the matrix, find the length of the shortest path between the two points. The matrix have two types of cells: 0 and 1.
+You can pass through 0 cells, but not 1 cells. Also, you can only go up, down, left, right, but not outside the matrix or diagonally.
+Exxample 1:
+matrix:
+0, 0
+0, 0.
+start: (0, 0), end (1, 1), then return 2
+start: (0, 0), end (0, 1), then return 1
+
+Example 2:
+matrix:
+0, 1, 0-google 1point3acres
+0, 1, 0
+0, 0, 0
+start (0, 0), end (0, 2), then return 6
+
+******************************************************************
+
+Permutation
+
+******************************************************************
+
+//1) Given a post-fix expression as a space delimited string with +, -, *, / operators, and double value, evaluate an expression. e.g. "5 3 + 2 / 1 +" -> " (5 + 3 )/ 2 + 1" => 5. visit 1point3acres.com for more.
+
+2) you have N mysql databases that return results in order, you need to build an API that returns the completely ordered lists, how will you solve this problem.
+
+3) Given a text file that is delimited by either $ or whitespace, how will you find top k words (Linux Commands)
+cat $FILE_NAME | tr '$' ' ' | tr ' ' '\n' | sort | uniq -c | sort -bnr | top k
+
+4) How many null pointers will there be in a binary tree with n nodes, where each node has two children ... one for left child, and another for right child?
+Each node will have 2 pointers (may or may not be null). So the tree will have 2n pointers.
+
+There are n nodes. Excluding the root node, every node must have a pointer pointing to it, i.e., n-1 not-null pointers.
+
+So, no. Of null pointers = 2n - (n - 1) = n+1
+
+
+*******************************************************************
+
+电面： leetcode 10：regular expression matching。. From 1point 3acres bbs
+onsite（san francisco）：
+1. 面试官是engineering effectiveness组的，一开始问了基本的网络常识，比如描述DNS的resolution的过程。之后问如何用shell command来统计一个文本文件里出现的单词集合（其实就是用pipe来组合各种command，类似 http://www.devshed.com/c/a/brain ... -do-with-pipelines/）。最后要求设计一个类似memcache的系统，过程中问了关于scalability和robustness的问题。
+2. 面试官是platform engineering的，问如果给定一个目录，目录下有些二进制的文件，有个utility函数能对文件进行解析，声称plain text的文件，要求写个程序统计出目录下所有的plain text文件中出现的单词的频率。 考查的内容有software profiling，current programming，pipeline等等。
+3. 面试官也是plaform engineering的，题目是：给两个大小分别为m和n的杯子，以及一个目标容量k，判断是否能够装出目标容量的水，就用BFS就可以了（也有数学的解法，但是面试官说不用数学的解法做），followup是求怎么装（这也就是为什么面试官不要用数学方法做的原因）。之后又讨论了下DFS和BFS的优劣。.1point3acres缃�
+4. 面试官是engineering effectivieness组的，第一题是leetcode 53：Maximum Subarray。followup是把输入从一维数组改成二维矩阵，差不多的思路。
+5. 最后一轮是behavior，基本上就是随便聊聊。
+
+********************************************************************
+
+面经：1）给定words dict， 给一个 string， 返回 string 中最长的单词
+2) lunch interview
+3）System design: rate limiter for all twitter requests.
+4)  behaviour question: work experience one by one 
+5) design and algorithm: 设计 一级二级三级 relationship 比较时间复杂度
+
+
+*********************************************************************
+
+twitter 店面
+
+第一轮.
+1.如何判断一棵树是BST.
+2.用2个栈实现队列。
+
+第二轮
+1.讨论hash table和如何解决collision, 各种解决策略的优缺点.
+
+2. 关于图的简单BFS的一道题。
+
+Onsite
+第一轮, 第一题，一个数组，求连续（每个元素挨着的）的最长递增子序列的长度，如
+果数组很长，如何优化.
+        第二题，就是那个爬梯子的题目了.
+
+第二轮，就是设计一个手机上的下棋的游戏，涉及到客户端服务器端.
+
+第三轮，Subsets problem. 然后扯项目经验.
+
+中午吃饭，twitter的伙食真的很好，比google要强多了。
+
+第四轮，扯扯项目经验，然后给2个sorted array, 求kth largest.
+
+第五轮，n个排序链表，每个有m个元素，如何合并成一个。最开始说的是min heap的方
+法，他要求的是O(1) space但是时间效率一样的，想出来了，然后证明时间开销，写了
+代码。
+        mirror a binary tree.
+
+第六轮 我觉得这个可能是个我杯具的原因之一吧，老印老板问的问题都很奇怪，比如
+从cache, ram, disk读一个字节需要多少时间。 1个200G的文件在硬盘上是如何存储的
+，我没在我简历上说这些啊.
+
+***********************************************************************
+
+电话两轮
+p1: coding题目
+   Given continuous incoming real time stock price stream,
+  1) design data structure to support query for max, min price in the past 
+12 months.
+  2)implement in code
+
+p2: 大数据设计题 Map Reduce, 会不断要求优化
+Given 1000 worker nodes/hosts, 1 coordinator node (4GB RAM) - 10 billion 
+numbers are distributed randomly among the worker nodes.
+
+i) Find the mean.
+ii) Find the median
+
+Onsite
+
+p1: 
+  1) detect circle in linkedlist, find the meeting point
+  2) coding evaluate 7+3*4*5+2+4......
+p2: 阿三
+  1)RGB color boxes with lowest cost, neighboring houses can not have the   
+same color.
+  2)coding Maxium Diameter of binary Tree
+3. short URL设计
+
+Lunch 是和电话面试的人 负责回答问题 不提交feedback 和google类似
+
+4.
+1) Most interesting project. why
+2) have large log files, how to design to implement
+Timestamp, Key, Amount of event
+getSequencce(key, start, end, min/hour/daily)
+follow up: what's the challenges
+
+5.
+coding 1: K-way Merge 变形题目
+coding 2: Decorator pattern变形题目
+
+6.
+1)Ask about project
+2) Sorting large files with single machine
+3) LRU Cache Design and coding
+
+onsite 小插曲:
+第二轮阿三本意想给出DP的染色问题 可惜题目条件给错了被我用greedy解决 三哥在那
+愣了半天 不断的加条件 可惜始终没加对 加完greedy依然有效  
+临走时三哥莫名其妙的和我说我本来还有很多题目没时间问你了 就有不详的预感 
+事后recruiter给的feedback证明三哥确实给了negative的 feedback
+
+**************************************************************************
+
+然后马上coding，实现strstr（）。还没有写完，就问我complexity。我说是O(nm),他
+追问一下，什么情况下是exactly O（nm)，我说是当str2不是str1的substring的时候。
+写完代码后，就问优化。首先是算法上，我说了KMP，然后要我大概讲一下KMP的思路，
+我只记得有个preprocess的过程，把一个string的prefix弄到一个array里去。然后又
+问，怎么从程序结构上优化，比如str1非常非常长，我就说分成很多chunks，放到不同
+的machine上去跑。他又说，那样会有问题，有可能在分chunks的时候把一个substring
+的match打断，问我怎么办。我没有答上来，后来想通了，其实很简单。在分chunk的时
+候，把断开的地方的左边和右边一定范围内，再弄一个chunk出来，这样子如果有match
+的话，就逃不掉了。
+
+接下来，就是设计问题。许多machine，每个machine上有许多user，每个user有很多
+followers，怎么统计每个user的平均follower个数。接着又问，怎么统计median，我
+说了个maxheap+minheap，他说不行，memory会不够，我就说用bin sort。然后他就默
+认了。
