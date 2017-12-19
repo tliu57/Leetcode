@@ -1,12 +1,11 @@
-import collections
 class Solution():
     def maxSlidingWindow(self, nums, k):
-	d = collections.deque()
+	d = []
 	out = []
 	for i, n in enumerate(nums):
 	    while d and nums[d[-1]] < n:
 	    	d.pop()
-	    d += i,
+	    d.append(i)
 	    if d[0] == i - k:
 	    	d.popleft()
 	    if i >= k-1:
