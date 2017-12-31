@@ -9,7 +9,7 @@ class Solution():
 	for i in range(len(self.choice_weight)):
 	    self.sum_weight += self.choice_weight[i]
 
-	rnd = random.randrange(self.sum_weight)
+	rnd = random.randrange(len(self.choice_weight))
     	for i in range(len(self.choice_weight)):
 	    if (rnd) < i:
 	    	return i
