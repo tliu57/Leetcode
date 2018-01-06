@@ -24,7 +24,7 @@ class Solution(object):
     	while True:
 		prevLevel = currLevel
 		currLevel = set()
-		for word in prevLevel:
+    		for word in prevLevel:
 			wordSets.remove(word)
     		for currWord in prevLevel:
 			for i in range(len(currWord)):
