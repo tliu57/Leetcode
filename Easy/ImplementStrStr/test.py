@@ -7,6 +7,7 @@ class Solution(object):
 	if haystack == "":
 		return -1
 	nexts = self.makeNext(needle)
+	print nexts
 	j = 0
 	i = 0
 	while i < len(haystack):
