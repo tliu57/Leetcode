@@ -98,6 +98,19 @@ class Elevator {
 	
 		void handleExternalRequest(ExternalRequest r){
 			// Write your code here
+			if(r.getDirection() == _UP) {
+				upStops[r.getLevel() - 1] = true;
+			    if (noRequests(downStops))
+			    {
+			    	status = UP;
+			    }
+			}
+			else {
+				downStops[r.getLevel() - 1] = true;
+				if (noRequests(upStops)) {
+					status = DOWN;
+				}
+			}
 		}
 	
 		void handleInternalRequest(InternalRequest r){
@@ -113,16 +126,16 @@ class Elevator {
 		}
 		
 		bool noRequests(vector<bool>& stops)
-    	{
-    		for (int i = 0; i < stops.size(); i++)
     		{
-    			if (stops[i])
+    			for (int i = 0; i < stops.size(); i++)
     			{
-    				return false;
+    				if (stops[i])
+    				{
+    					return false;
+    				}
     			}
+    			return true;
     		}
-    		return true;
-    	}
 	
 		string elevatorStatusDescription(){
 		    string status_;
