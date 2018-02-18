@@ -115,14 +115,74 @@ class Elevator {
 	
 		void handleInternalRequest(InternalRequest r){
 			// Write your code here
+			if (status == UP) {
+				if (r.getLevel() >= currLevel + 1) {
+					upStop[r.getLevel()-1] = true;
+				}
+			}
+			else if (status == DOWN) {
+				if (r.getLevel() <= currLevel + 1) {
+					downStops[r.getLevel()-1] = true;
+				}
+			}
 		}
 	
 		void openGate(){
 			// Write your code here
+			if (status == UP) {
+				for (int i = 0; i < upStops.size(); i++) {
+					checkLevel = (currLevel + i) % upStops.size();
+					if (upStops[checkLevel]) {
+						currLevel = checkLevel;
+						upStops[checkLevel] = false;
+						break;
+					}
+				}
+			}
+			else if (status == DOWN) {
+				for (int i = 0; i < downStops.size(), i++) {
+					checkLevel = (currLevel + downStops.size()-1)%downStops.size();
+					if (downStops[checkLevel]) {
+						currLevel = checkLevel;
+						downStops[checkLevel] = false;
+						break
+					}
+				}
+			}
+
 		}
 		
 		void closeGate(){
 			// Write your code here
+
+		    if (status == IDLE) {
+		    	if(noRequests(downStops)) {
+				status = UP;
+				return;
+			}
+			if(noRequests(upStops)){
+				status = DOWN;
+				return;
+			}
+		    
+		    }
+
+		    else if (status == UP) {
+		    	if (noRequests(upStops)){
+				if (noRequests(downStops)) {
+					status = IDLE;
+				}
+				else status = Down;
+			}
+		    }
+		    else {
+		    	if (noRequests(downStops)) {
+				if(noRequests(upStops)) {
+					status = IDLE;
+				}
+				else status = UP;
+			}
+		    }
 		}
 		
 		bool noRequests(vector<bool>& stops)
