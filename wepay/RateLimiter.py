@@ -14,6 +14,20 @@ class RateLimiter():
 	else:
 		self.map[url] = [timestamp]
 
+    def parse(self, string):
+	for line in string.split("\n"):
+		parsed_out = line.split("\ ")
+		timestamp = parsed_out[0]
+		url = parsed_out[1]
+		self.hit(url, timestamp)
+	return
+		
 
-rl = RateLimiter()
-
+rl = RateLimiter(10)
+test_str = """
+2016.01.01-12:01:01 graybox.apple.com:4567
+2016.01.01-12:01:13 whitebox.apple.com:4567
+2016.01.01-12:01:45 graybox.apple.com:4567
+2016.01.01-12:01:46 graybox.apple.com:4567
+"""
+rl.parse(test_str)
