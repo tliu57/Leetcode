@@ -1,3 +1,7 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Elevator;
 class ExternalRequest;
 class InternalRequest;
@@ -117,7 +121,7 @@ class Elevator {
 			// Write your code here
 			if (status == UP) {
 				if (r.getLevel() >= currLevel + 1) {
-					upStop[r.getLevel()-1] = true;
+					upStops[r.getLevel()-1] = true;
 				}
 			}
 			else if (status == DOWN) {
@@ -131,7 +135,7 @@ class Elevator {
 			// Write your code here
 			if (status == UP) {
 				for (int i = 0; i < upStops.size(); i++) {
-					checkLevel = (currLevel + i) % upStops.size();
+					int checkLevel = (currLevel + i) % upStops.size();
 					if (upStops[checkLevel]) {
 						currLevel = checkLevel;
 						upStops[checkLevel] = false;
@@ -140,12 +144,12 @@ class Elevator {
 				}
 			}
 			else if (status == DOWN) {
-				for (int i = 0; i < downStops.size(), i++) {
-					checkLevel = (currLevel + downStops.size()-1)%downStops.size();
+				for (int i = 0; i < downStops.size(); i++) {
+					int checkLevel = (currLevel + downStops.size()-1)%downStops.size();
 					if (downStops[checkLevel]) {
 						currLevel = checkLevel;
 						downStops[checkLevel] = false;
-						break
+						break;
 					}
 				}
 			}
@@ -172,7 +176,7 @@ class Elevator {
 				if (noRequests(downStops)) {
 					status = IDLE;
 				}
-				else status = Down;
+				else status = DOWN;
 			}
 		    }
 		    else {
@@ -221,4 +225,31 @@ class Elevator {
 void ElevatorButton::pressButton(){
 	InternalRequest request = InternalRequest(level);
 	elevator->handleInternalRequest(request);
+}
+
+
+int main(int argc, char* argv[]) {
+	Elevator elevator = new Elevator(5);
+	ExternalRequest ex1 = new ExternalRequest(3, "Down");
+	elevator.handleExternalRequest(ex1);
+	cout << elevator.elevatorStatusDescription() << endl;
+	ExternalRequest ex2 = new ExternalRequest(2, "Up");
+	elevator.handleExternalRequest(ex2);
+	cout << elevator.elevatorStatusDescription() << endl;
+	elevator.openGate();
+	cout << elevator.elevatorStatusDescription() << endl;
+	InternalRequest in1 = new InternalRequest(1);
+	elevator.handleInternalRequests(in1);
+	cout << elevator.elevatorStatusDescription() << endl;
+	elevator.closeGate();
+	cout << elevator.elevatorStatusDescription() << endl;
+	elevator.openGate();
+	cout << elevator.elevatorStatusDescription() << endl;
+	elevator.closeGate();
+	cout << elevator.elevatorStatusDescription() << endl;
+	elevator.openGate();
+	cout << elevator.elevatorStatusDescription() << endl;
+	elevator.closeGate();
+	cout << elevator.elevatorStatusDescription() << endl;
+	return 0;
 }
